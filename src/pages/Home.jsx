@@ -4,29 +4,29 @@ const offerings = [
   {
     title: "Billing-Portals",
     description:
-      "Billing, inventory, and reports designed for accuracy and daily reliability.",
+      "Reliable billing, inventory, and reporting tools designed for accuracy and daily use.",
     link: "/billing-portal",
   },
   {
-    title: "Fully Functional Websites",
+    title: "Websites",
     description:
-      "Professionally built websites aligned with brand, performance, and growth.",
+      "Professional websites built for strong branding, solid performance, and steady growth.",
     link: "/websites",
   },
   {
-    title: "Dashboards for F&B, Retail, Religious",
-    description: "Operational dashboards tailored to industry-specific needs.",
+    title: "Industry Dashboard",
+    description: "Operational dashboards crafted to deliver clear insights for industry-specific teams.",
     link: "/dashboards",
   },
   {
-    title: "Web QRs for Ordering",
+    title: "Web QRs",
     description:
-      "Fast, browser-based ordering experiences without app installs.",
+      "Browser-based QR ordering flows that offer fast, simple, and install-free experiences.",
     link: "/web-qrs",
   },
   {
-    title: "Sarang Logistics Dashboards",
-    description: "Unified visibility across logistics operations and tracking.",
+    title: "Logistics Boards",
+    description: "Logistics dashboards providing unified visibility across tracking and daily operations.",
     link: "/logistics",
   },
 ];
@@ -46,8 +46,7 @@ export default function Home() {
           <div className="hero-text">
         
             <h1>
-              Digital products that simplify and scale everyday business
-              operations.
+              Solutions that simplify and scale your business operations.
             </h1>
             <p className="subtitle">
               Sarang builds billing systems, operational dashboards, and
@@ -69,7 +68,7 @@ export default function Home() {
             </p>
             <div className="mini-metrics">
               <div>
-                <strong>Production Ready</strong>
+                <strong>Streamlined</strong>
                 <span>deployments</span>
               </div>
               <div>
@@ -90,14 +89,15 @@ export default function Home() {
           <div>
             <h2>About Sarang</h2>
             <p>
-              Sarang is a product and technology company building practical
-              digital tools for billing, operations, and service workflows. We
-              focus on accuracy, transparency, and usability—helping businesses
-              operate smoothly from day one and scale with confidence.
+            Sarang builds practical, user-friendly tools that make everyday 
+            business tasks easier whether it's billing, operations, or workflow management. 
+            With accuracy, clarity, and usability at the core, our products help teams work smoothly
+            from day one and scale with confidence. We’re committed to creating solutions that adapt
+            as business grows, ensuring long-term stability and impact.
             </p>
           </div>
           <div className="highlight-card">
-            <h3>Why teams choose us</h3>
+            <h3>Why Sarang</h3>
             <ul>
               {highlights.map((item) => (
                 <li key={item}>{item}</li>
