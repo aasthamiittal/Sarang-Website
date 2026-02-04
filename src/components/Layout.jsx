@@ -1,46 +1,129 @@
-import { NavLink, Outlet, Link } from "react-router-dom";
+import { NavLink, Outlet, Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import logo from "../assests/Logo.png";
 
 export default function Layout() {
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
+  };
+
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
+  };
+
   return (
     <div className="page">
-      <header className="site-header">
+      <motion.header 
+        className={`site-header ${scrolled ? "scrolled" : ""}`}
+        initial="hidden"
+        animate="visible"
+        variants={navVariants}
+      >
         <nav className="nav">
-          <NavLink className="logo" to="/">
-            <img src={logo} alt="Sarang logo" />
-            <span className="sr-only">Sarang</span>
-          </NavLink>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <NavLink className="logo" to="/">
+              <img src={logo} alt="Sarang logo" />
+              <span className="sr-only">Sarang</span>
+            </NavLink>
+          </motion.div>
           <div className="nav-links">
-            <NavLink to="/billing-portal">Billing Portal</NavLink>
-            <NavLink to="/websites">Websites</NavLink>
-            <NavLink to="/dashboards">Dashboards</NavLink>
-            <NavLink to="/web-qrs">Web QRs</NavLink>
-            <NavLink to="/logistics">Logistics</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            {[
+              { to: "/billing-portal", label: "Billing Portal" },
+              { to: "/websites", label: "Websites" },
+              { to: "/dashboards", label: "Dashboards" },
+              { to: "/web-qrs", label: "Web QRs" },
+              { to: "/logistics", label: "Logistics" },
+              { to: "/contact", label: "Contact" }
+            ].map((link, index) => (
+              <motion.div
+                key={link.to}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <NavLink to={link.to}>{link.label}</NavLink>
+              </motion.div>
+            ))}
           </div>
           <div className="nav-actions">
-            <Link className="ghost-button button-link" to="/contact">
-              Book a Demo
-            </Link>
-            <button className="primary-button">Get Started</button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link className="ghost-button button-link" to="/contact">
+                Book a Demo
+              </Link>
+            </motion.div>
+            <motion.button 
+              className="primary-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get Started
+            </motion.button>
           </div>
         </nav>
-      </header>
+      </motion.header>
 
-      <Outlet />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          <Outlet />
+        </motion.div>
+      </AnimatePresence>
 
-      <footer className="footer">
+      <motion.footer 
+        className="footer"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div>
           <h3>Ready to modernize operations?</h3>
           <p>Contact us at contact@sarang.com or +91-00000-00000.</p>
         </div>
         <div className="footer-actions">
-          <Link className="primary-button button-link" to="/contact">
-            Book a Demo
-          </Link>
-          <button className="ghost-button">Get Started</button>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link className="primary-button button-link" to="/contact">
+              Book a Demo
+            </Link>
+          </motion.div>
+          <motion.button 
+            className="ghost-button"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get Started
+          </motion.button>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }

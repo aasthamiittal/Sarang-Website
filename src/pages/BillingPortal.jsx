@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
+import billingMedia from "../assests/Home/products.png";
 
 const features = [
   {
@@ -73,7 +78,12 @@ const pricingFeatures = [
 
 function FeatureIcon() {
   return (
-    <span className="feature-icon" aria-hidden="true">
+    <motion.span 
+      className="feature-icon" 
+      aria-hidden="true"
+      whileHover={{ rotate: 360, scale: 1.1 }}
+      transition={{ duration: 0.5 }}
+    >
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
           d="M12 3l7 4v10l-7 4-7-4V7l7-4z"
@@ -90,74 +100,138 @@ function FeatureIcon() {
           strokeLinejoin="round"
         />
       </svg>
-    </span>
+    </motion.span>
   );
 }
 
 export default function BillingPortal() {
+  const heroRef = useRef(null);
+  const heroInView = useInView(heroRef, { once: true });
+
   return (
     <main>
-      <section className="hero">
-        <div className="hero-content">
-          <div className="hero-text">
-            <p className="eyebrow">Billing Portal</p>
-            <h1>
+      <section className="hero" ref={heroRef}>
+        <motion.div 
+          className="hero-content"
+          initial="hidden"
+          animate={heroInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <motion.div className="hero-text" variants={itemVariants}>
+            <motion.p 
+              className="eyebrow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 }}
+            >
+              Billing Portal
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
               Billing Portal – One platform for billing, inventory, and
               business visibility.
-            </h1>
-            <p className="subtitle">
+            </motion.h1>
+            <motion.p 
+              className="subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4 }}
+            >
               Manage billing, inventory, customers, and reports through a
               single, structured system built for growing businesses.
-            </p>
-            <div className="cta-row">
-              <Link className="primary-button button-link" to="/contact">
-                Book a Demo
-              </Link>
-              <button className="secondary-button">Get Started</button>
-            </div>
-            <div className="trust-row">
+            </motion.p>
+            <motion.div 
+              className="cta-row"
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link className="primary-button button-link" to="/contact">
+                  Book a Demo
+                </Link>
+              </motion.div>
+              <motion.button 
+                className="secondary-button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Started
+              </motion.button>
+            </motion.div>
+            <motion.div 
+              className="trust-row"
+              initial={{ opacity: 0 }}
+              animate={heroInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.6 }}
+            >
               <span>Designed for retail, F&amp;B, and service-driven operations.</span>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className="hero-card"
+            variants={cardVariants}
+            whileHover={{ y: -8 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="hero-card-image">
+              <img
+                className="trust-image"
+                src={billingMedia}
+                alt="Billing portal preview"
+                loading="lazy"
+              />
             </div>
-          </div>
-          <div className="hero-card">
             <h3>Unified Command Center</h3>
             <p>
               Monitor invoices, stock, and payments from one secure dashboard
               with clear, real-time insights.
             </p>
             <div className="mini-metrics">
-              <div>
-                <strong>High Level</strong>
-                <span>infrastructure</span>
-              </div>
-              <div>
-                <strong>Faster</strong>
-                <span>billing workflows</span>
-              </div>
-              <div>
-                <strong>Ongoing</strong>
-                <span>technical support</span>
-              </div>
+              {[
+                { label: "High Level", sublabel: "infrastructure" },
+                { label: "Faster", sublabel: "billing workflows" },
+                { label: "Ongoing", sublabel: "technical support" }
+              ].map((metric, index) => (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.7 + index * 0.1 }}
+                >
+                  <strong>{metric.label}</strong>
+                  <span>{metric.sublabel}</span>
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
-      <section className="section" id="overview">
+      <AnimatedSection className="section" id="overview">
         <div className="section-content">
-          <h2>What is Billing Portal?</h2>
-          <p>
+          <motion.h2 variants={itemVariants}>What is Billing Portal?</motion.h2>
+          <motion.p 
+            variants={itemVariants}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
             Billing Portal is a centralized platform that handles invoicing,
             inventory tracking, customer records, payments, and reporting. It
             replaces fragmented tools with one structured system that keeps
             operations accurate and aligned.
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="section muted" id="why">
+      <AnimatedSection className="section muted" id="why">
         <div className="section-content two-column">
-          <div>
+          <motion.div variants={itemVariants}>
             <h2>Why Billing Portal?</h2>
             <p>
               Billing Portal reduces manual effort and operational errors by
@@ -165,83 +239,122 @@ export default function BillingPortal() {
               clarity, and inventory control—helping teams stay compliant and
               informed without complexity.
             </p>
-          </div>
-          <div className="benefit-list">
-            <div>
-              <h4>Time savings</h4>
-              <p>Reduce billing time with structured workflows.</p>
-            </div>
-            <div>
-              <h4>Error reduction</h4>
-              <p>Maintain consistent data and compliance.</p>
-            </div>
-            <div>
-              <h4>Collections clarity</h4>
-              <p>Track outstanding payments and aging clearly.</p>
-            </div>
-            <div>
-              <h4>Business visibility</h4>
-              <p>View sales, stock, and performance together.</p>
-            </div>
-          </div>
+          </motion.div>
+          <motion.div 
+            className="benefit-list"
+            variants={containerVariants}
+          >
+            {[
+              { title: "Time savings", desc: "Reduce billing time with structured workflows." },
+              { title: "Error reduction", desc: "Maintain consistent data and compliance." },
+              { title: "Collections clarity", desc: "Track outstanding payments and aging clearly." },
+              { title: "Business visibility", desc: "View sales, stock, and performance together." }
+            ].map((benefit, index) => (
+              <motion.div key={benefit.title} variants={itemVariants}>
+                <h4>{benefit.title}</h4>
+                <p>{benefit.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="section" id="features">
+      <AnimatedSection className="section" id="features">
         <div className="section-content">
-          <div className="section-header">
+          <motion.div className="section-header" variants={itemVariants}>
             <h2>Key Features</h2>
             <p>
               Purpose-built features that support daily operations and
               long-term growth.
             </p>
-          </div>
-          <div className="feature-grid">
+          </motion.div>
+          <motion.div 
+            className="feature-grid"
+            variants={containerVariants}
+          >
             {features.map((feature) => (
-              <div key={feature.title} className="feature-card">
+              <motion.div 
+                key={feature.title} 
+                className="feature-card"
+                variants={cardVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <FeatureIcon />
                 <h3>{feature.title}</h3>
                 <p>{feature.detail}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="section muted" id="benefits">
+      <AnimatedSection className="section muted" id="benefits">
         <div className="section-content two-column">
-          <div>
+          <motion.div variants={itemVariants}>
             <h2>Benefits that scale with you</h2>
             <p>
               Billing Portal supports both single-location businesses and
               expanding teams. Its structure adapts as your operations grow—without
               forcing you to rebuild systems later.
             </p>
-            <Link className="primary-button button-link" to="/contact">
-              Book a Demo
-            </Link>
-          </div>
-          <div className="highlight-card">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{ marginTop: "24px" }}
+            >
+              <Link className="primary-button button-link" to="/contact">
+                Book a Demo
+              </Link>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className="highlight-card"
+            variants={cardVariants}
+            whileHover={{ y: -4 }}
+          >
             <h3>Operational Confidence</h3>
             <ul>
-              <li>Unified customer and payment records</li>
-              <li>Standardized tax and invoice handling</li>
-              <li>Controlled approvals and audit visibility</li>
-              <li>Inventory consistency across locations</li>
+              {[
+                "Unified customer and payment records",
+                "Standardized tax and invoice handling",
+                "Controlled approvals and audit visibility",
+                "Inventory consistency across locations"
+              ].map((item, index) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {item}
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="section" id="pricing">
+      <AnimatedSection className="section" id="pricing">
         <div className="section-content">
-          <div className="section-header">
+          <motion.div className="section-header" variants={itemVariants}>
             <h2>Pricing</h2>
             <p>Choose a plan that matches your business scale.</p>
-          </div>
-          <div className="pricing-grid">
-            {pricingPlans.map((plan) => (
-              <div key={plan.name} className="pricing-card">
+          </motion.div>
+          <motion.div 
+            className="pricing-grid"
+            variants={containerVariants}
+          >
+            {pricingPlans.map((plan, index) => (
+              <motion.div 
+                key={plan.name} 
+                className="pricing-card"
+                variants={cardVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{ zIndex: index === 1 ? 10 : 1 }}
+              >
                 <div>
                   <h3>{plan.name}</h3>
                   <p className="price">{plan.price}</p>
@@ -251,26 +364,34 @@ export default function BillingPortal() {
                   {pricingFeatures.map((perk) => {
                     const isIncluded = plan.perks.includes(perk);
                     return (
-                      <li
+                      <motion.li
                         key={perk}
                         className={isIncluded ? "perk-on" : "perk-off"}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
                       >
                         <span className="perk-icon">
                           {isIncluded ? "✓" : "×"}
                         </span>
                         <span>{perk}</span>
-                      </li>
+                      </motion.li>
                     );
                   })}
                 </ul>
-                <button className="secondary-button full-width">
+                <motion.button 
+                  className="secondary-button full-width"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   Get Started
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
     </main>
   );
 }
