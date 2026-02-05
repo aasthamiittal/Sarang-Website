@@ -27,6 +27,20 @@ export default function Layout() {
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
+
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const navVariants = {
@@ -96,14 +110,11 @@ export default function Layout() {
                 Book a Demo
               </Link>
             </motion.div>
-            <motion.button 
-              className="primary-button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={closeMobileMenu}
-            >
-              Get Started
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link className="primary-button button-link" to="/#products-services" onClick={closeMobileMenu}>
+                Get Started
+              </Link>
+            </motion.div>
           </div>
         </nav>
       </motion.header>
@@ -129,7 +140,7 @@ export default function Layout() {
       >
         <div>
           <h3>Ready to modernize operations?</h3>
-          <p>Contact us at contact@sarang.com or +91-00000-00000.</p>
+          <p>Contact us at Sarang@offical@tech@gmail.com or +91-9458317782.</p>
         </div>
         <div className="footer-actions">
           <motion.div
@@ -140,13 +151,11 @@ export default function Layout() {
               Book a Demo
             </Link>
           </motion.div>
-          <motion.button 
-            className="ghost-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link className="ghost-button button-link" to="/#products-services">
+              Get Started
+            </Link>
+          </motion.div>
         </div>
       </motion.footer>
     </div>

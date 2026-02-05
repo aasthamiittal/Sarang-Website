@@ -228,6 +228,10 @@ ul {
   transform: scaleX(1);
 }
 
+.site-header .nav-actions .primary-button {
+  color: #ffffff;
+}
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
@@ -335,6 +339,10 @@ ul {
     min-width: 0;
     padding: 6px 10px;
     font-size: 0.75rem;
+  }
+
+  .site-header .nav-actions .primary-button {
+    color: #ffffff;
   }
 }
 
@@ -1304,6 +1312,10 @@ ul {
     font-size: 0.7rem;
   }
 
+  .site-header .nav-actions .primary-button {
+    color: #ffffff;
+  }
+
   .hero {
     padding: 40px 4vw 60px;
   }
@@ -1387,6 +1399,10 @@ ul {
     min-width: 0;
     padding: 5px 8px;
     font-size: 0.7rem;
+  }
+
+  .site-header .nav-actions .primary-button {
+    color: #ffffff;
   }
 
   .hero-card {

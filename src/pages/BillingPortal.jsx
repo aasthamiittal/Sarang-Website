@@ -154,13 +154,11 @@ export default function BillingPortal() {
                   Book a Demo
                 </Link>
               </motion.div>
-              <motion.button 
-                className="secondary-button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Started
-              </motion.button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link className="secondary-button button-link" to="/#products-services">
+                  Get Started
+                </Link>
+              </motion.div>
             </motion.div>
             <motion.div 
               className="trust-row"
