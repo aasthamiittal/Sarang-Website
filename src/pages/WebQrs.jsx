@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
-import webQrsMedia from "../assests/Home/trusted.png";
+import webQrsMedia from "../assests/Product-Related/f&b-webqr.png";
 
 const pricingPlans = [
   {
@@ -225,13 +225,6 @@ export default function WebQrs() {
                     </motion.li>
                   ))}
                 </ul>
-                <motion.button
-                  className="secondary-button full-width"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Get Started
-                </motion.button>
               </motion.div>
             ))}
           </motion.div>

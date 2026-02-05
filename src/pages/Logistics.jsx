@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
-import logisticsMedia from "../assests/Home/main-image.jpg";
+import logisticsMedia from "../assests/Product-Related/Generic-product-2-image.png";
 
 export default function Logistics() {
   const heroRef = useRef(null);

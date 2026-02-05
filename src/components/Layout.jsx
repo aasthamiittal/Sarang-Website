@@ -6,6 +6,7 @@ import logo from "../assests/Logo.png";
 export default function Layout() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,19 @@ export default function Layout() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const navVariants = {
     hidden: { y: -20, opacity: 0 },
@@ -34,17 +48,27 @@ export default function Layout() {
         animate="visible"
         variants={navVariants}
       >
-        <nav className="nav">
+        <nav className={`nav ${mobileMenuOpen ? "menu-open" : ""}`}>
+          <button 
+            className={`hamburger ${mobileMenuOpen ? "active" : ""}`} 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <motion.div
+            className="logo-wrapper"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <NavLink className="logo" to="/">
+            <NavLink className="logo" to="/" onClick={closeMobileMenu}>
               <img src={logo} alt="Sarang logo" />
               <span className="sr-only">Sarang</span>
             </NavLink>
           </motion.div>
-          <div className="nav-links">
+          <div className={`nav-links ${mobileMenuOpen ? "active" : ""}`}>
             {[
               { to: "/billing-portal", label: "Billing Portal" },
               { to: "/websites", label: "Websites" },
@@ -59,16 +83,16 @@ export default function Layout() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <NavLink to={link.to}>{link.label}</NavLink>
+                <NavLink to={link.to} onClick={closeMobileMenu}>{link.label}</NavLink>
               </motion.div>
             ))}
           </div>
-          <div className="nav-actions">
+          <div className={`nav-actions ${mobileMenuOpen ? "active" : ""}`}>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link className="ghost-button button-link" to="/contact">
+              <Link className="ghost-button button-link" to="/contact" onClick={closeMobileMenu}>
                 Book a Demo
               </Link>
             </motion.div>
@@ -76,6 +100,7 @@ export default function Layout() {
               className="primary-button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={closeMobileMenu}
             >
               Get Started
             </motion.button>

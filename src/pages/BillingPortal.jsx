@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
-import billingMedia from "../assests/Home/products.png";
+import billingMedia from "../assests/Product-Related/products.png";
 
 const features = [
   {
@@ -380,13 +380,6 @@ export default function BillingPortal() {
                     );
                   })}
                 </ul>
-                <motion.button 
-                  className="secondary-button full-width"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Get Started
-                </motion.button>
               </motion.div>
             ))}
           </motion.div>

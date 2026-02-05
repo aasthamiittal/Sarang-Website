@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import trustimage from "../assests/Home/trusted.png";
+import trustimage from "../assests/Product-Related/People-Discussing-image.png";
 
 const offerings = [
   {
