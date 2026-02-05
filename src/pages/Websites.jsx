@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
-import websitesMedia from "../assests/Product-Related/about.png";
+import websitesMedia from "../assests/Product-Related/website-related.png";
 
 const websiteTypes = [
   {
