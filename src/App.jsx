@@ -7,12 +7,14 @@ import Dashboards from "./pages/Dashboards.jsx";
 import WebQrs from "./pages/WebQrs.jsx";
 import Logistics from "./pages/Logistics.jsx";
 import Contact from "./pages/Contact.jsx";
+import GetStarted from "./pages/GetStarted.jsx";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="get-started" element={<GetStarted />} />
         <Route path="billing-portal" element={<BillingPortal />} />
         <Route path="websites" element={<Websites />} />
         <Route path="dashboards" element={<Dashboards />} />

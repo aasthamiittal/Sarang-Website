@@ -137,7 +137,7 @@ export default function Home() {
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link className="secondary-button button-link" to="#products-services">
+                <Link className="secondary-button button-link" to="/get-started">
                   Get Started
                 </Link>
               </motion.div>

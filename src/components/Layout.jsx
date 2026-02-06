@@ -30,12 +30,20 @@ export default function Layout() {
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.slice(1);
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
-      } else {
-        window.scrollTo(0, 0);
-      }
+      const scrollToElement = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          return true;
+        }
+        return false;
+      };
+      const t1 = setTimeout(() => {
+        if (!scrollToElement()) {
+          setTimeout(scrollToElement, 200);
+        }
+      }, 100);
+      return () => clearTimeout(t1);
     } else {
       window.scrollTo(0, 0);
     }
@@ -111,7 +119,7 @@ export default function Layout() {
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link className="primary-button button-link" to="/#products-services" onClick={closeMobileMenu}>
+              <Link className="primary-button button-link" to="/get-started" onClick={closeMobileMenu}>
                 Get Started
               </Link>
             </motion.div>
@@ -152,7 +160,7 @@ export default function Layout() {
             </Link>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link className="ghost-button button-link" to="/#products-services">
+            <Link className="ghost-button button-link" to="/get-started">
               Get Started
             </Link>
           </motion.div>
