@@ -148,7 +148,7 @@ export default function Layout() {
       >
         <div>
           <h3>Ready to modernize operations?</h3>
-          <p>Contact us at Sarang@offical@tech@gmail.com or +91-9458317782.</p>
+          <p>Contact us at Sarang.offical.tech@gmail.com or +91-9458317782.</p>
         </div>
         <div className="footer-actions">
           <motion.div

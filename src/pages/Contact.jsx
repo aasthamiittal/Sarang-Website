@@ -157,7 +157,7 @@ export default function Contact() {
               <ul style={{fontSize:'0.9rem'}}>
                 {[
                   { label: "Phone", value: "+91-9458317782" },
-                  { label: "Email", value: "Sarang@offical@tech@gmail.com" },
+                  { label: "Email", value: "Sarang.offical.tech@gmail.com" },
                   { label: "Operating Hours", value: "Mon–Sat, 10 AM – 8 PM" }
                 ].map((item, index) => (
                   <motion.li
