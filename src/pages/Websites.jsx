@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
 import websitesMedia from "../assests/Product-Related/website-related.png";
+import ecommerceFiller from "../assests/Fillers/e-commerce.png";
 
 const websiteTypes = [
   {
@@ -207,8 +208,8 @@ export default function Websites() {
       </AnimatedSection>
 
       <AnimatedSection className="section muted">
-        <div className="section-content two-column">
-          <motion.div variants={itemVariants}>
+        <div className="section-content section-with-image">
+          <motion.div className="section-image-block" variants={itemVariants}>
             <h2>Custom website delivery</h2>
             <p>
               Our website delivery process focuses on clarity, usability, and
@@ -217,6 +218,11 @@ export default function Websites() {
               conversions—whether on Shopify, Odoo, or custom domains.
             </p>
           </motion.div>
+          <motion.div className="section-image-wrap" variants={cardVariants}>
+            <img src={ecommerceFiller} alt="E-commerce solutions" loading="lazy" />
+          </motion.div>
+        </div>
+        <div className="section-content">
           <motion.div
             className="highlight-card"
             variants={cardVariants}

@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
 import dashboardsMedia from "../assests/Product-Related/Generic-product-image.png";
+import dashboardRetailFiller from "../assests/Fillers/dashboard-retail.png";
 
 const dashboards = [
   {
@@ -169,11 +170,16 @@ export default function Dashboards() {
       </section>
 
       <AnimatedSection className="section">
-        <div className="section-content">
-          <motion.div className="section-header" variants={itemVariants}>
+        <div className="section-content section-with-image">
+          <motion.div className="section-image-block" variants={itemVariants}>
             <h2>Dashboard coverage</h2>
             <p>Specialized views for every operating team.</p>
           </motion.div>
+          <motion.div className="section-image-wrap" variants={cardVariants}>
+            <img src={dashboardRetailFiller} alt="Dashboard coverage" loading="lazy" />
+          </motion.div>
+        </div>
+        <div className="section-content">
           <motion.div className="feature-grid" variants={containerVariants}>
             {dashboards.map((item) => (
               <motion.div

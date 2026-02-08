@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
 import logisticsMedia from "../assests/Product-Related/Generic-product-2-image.png";
+import logisticsFiller from "../assests/Fillers/logistics.png";
 
 export default function Logistics() {
   const heroRef = useRef(null);
@@ -112,8 +113,8 @@ export default function Logistics() {
       </section>
 
       <AnimatedSection className="section">
-        <div className="section-content two-column">
-          <motion.div variants={itemVariants}>
+        <div className="section-content section-with-image">
+          <motion.div className="section-image-block" variants={itemVariants}>
             <h2>What to expect</h2>
             <p>
               The Sarang Logistics Dashboard will bring together shipment
@@ -123,6 +124,11 @@ export default function Logistics() {
               confidence.
             </p>
           </motion.div>
+          <motion.div className="section-image-wrap" variants={cardVariants}>
+            <img src={logisticsFiller} alt="Logistics dashboard" loading="lazy" />
+          </motion.div>
+        </div>
+        <div className="section-content">
           <motion.div
             className="highlight-card"
             variants={cardVariants}

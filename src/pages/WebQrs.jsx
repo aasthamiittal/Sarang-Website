@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
 import webQrsMedia from "../assests/Product-Related/f&b-webqr.png";
+import webQrFiller from "../assests/Fillers/web-qr-ordering.png";
 
 const pricingPlans = [
   {
@@ -151,14 +152,19 @@ export default function WebQrs() {
       </section>
 
       <AnimatedSection className="section">
-        <div className="section-content two-column">
-          <motion.div variants={itemVariants}>
+        <div className="section-content section-with-image">
+          <motion.div className="section-image-block" variants={itemVariants}>
             <h2>What's included</h2>
             <p>
               Our QR ordering systems are designed for speed, reliability, and
               operational control—without requiring customers to install apps.
             </p>
           </motion.div>
+          <motion.div className="section-image-wrap" variants={cardVariants}>
+            <img src={webQrFiller} alt="QR ordering" loading="lazy" />
+          </motion.div>
+        </div>
+        <div className="section-content">
           <motion.div
             className="highlight-card"
             variants={cardVariants}

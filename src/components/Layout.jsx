@@ -146,24 +146,37 @@ export default function Layout() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div>
-          <h3>Ready to modernize operations?</h3>
-          <p>Contact us at Sarang.official.tech@gmail.com or +91-9315608061.</p>
-        </div>
-        <div className="footer-actions">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link className="primary-button button-link" to="/contact">
-              Book a Demo
-            </Link>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link className="ghost-button button-link" to="/get-started">
-              Get Started
-            </Link>
-          </motion.div>
+        <div className="footer-inner">
+          <div className="footer-main">
+            <div className="footer-brand">
+              <NavLink className="footer-logo" to="/">
+                <img src={logo} alt="Sarang" />
+              </NavLink>
+              <p className="footer-tagline">Billing, dashboards, websites, QR ordering, and logistics for growing businesses.</p>
+            </div>
+            <div className="footer-links">
+              <h4>Products</h4>
+              <Link to="/billing-portal">Billing Portal</Link>
+              <Link to="/websites">Websites</Link>
+              <Link to="/dashboards">Dashboards</Link>
+              <Link to="/web-qrs">Web QRs</Link>
+              <Link to="/logistics">Logistics</Link>
+            </div>
+            <div className="footer-contact">
+              <h4>Contact</h4>
+              <a href="mailto:Sarang.official.tech@gmail.com">Sarang.official.tech@gmail.com</a>
+              <a href="tel:+919315608061">+91 9315608061</a>
+            </div>
+            <div className="footer-cta">
+              <h4>Get in touch</h4>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link className="footer-cta-button" to="/contact">Book a Demo</Link>
+              </motion.div>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <span>© {new Date().getFullYear()} Sarang. All rights reserved.</span>
+          </div>
         </div>
       </motion.footer>
     </div>

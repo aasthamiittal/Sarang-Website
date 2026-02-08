@@ -145,14 +145,14 @@ export default function Contact() {
               Reach out to our team to discuss your requirements and get a
               tailored demo.
             </motion.p>
-            <motion.div 
-              className="contact-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
-              whileHover={{ y: -4 }}
-            >
-              <h3>Reach Out to Us Anytime!</h3>
+<motion.div 
+            className="contact-card"
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+            whileHover={{ y: -4 }}
+          >
+            <h3>Reach Out to Us Anytime!</h3>
               <br/>
               <ul style={{fontSize:'0.9rem'}}>
                 {[

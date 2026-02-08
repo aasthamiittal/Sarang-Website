@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { AnimatedSection, containerVariants, itemVariants, cardVariants } from "../utils/animations";
 import billingMedia from "../assests/Product-Related/products.png";
+import billingFiller from "../assests/Fillers/Billing.png";
 
 const features = [
   {
@@ -210,20 +211,19 @@ export default function BillingPortal() {
       </section>
 
       <AnimatedSection className="section" id="overview">
-        <div className="section-content">
-          <motion.h2 variants={itemVariants}>What is Billing Portal?</motion.h2>
-          <motion.p 
-            variants={itemVariants}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Billing Portal is a centralized platform that handles invoicing,
-            inventory tracking, customer records, payments, and reporting. It
-            replaces fragmented tools with one structured system that keeps
-            operations accurate and aligned.
-          </motion.p>
+        <div className="section-content section-with-image">
+          <motion.div className="section-image-block" variants={itemVariants}>
+            <h2>What is Billing Portal?</h2>
+            <p>
+              Billing Portal is a centralized platform that handles invoicing,
+              inventory tracking, customer records, payments, and reporting. It
+              replaces fragmented tools with one structured system that keeps
+              operations accurate and aligned.
+            </p>
+          </motion.div>
+          <motion.div className="section-image-wrap" variants={cardVariants}>
+            <img src={billingFiller} alt="Billing portal" loading="lazy" />
+          </motion.div>
         </div>
       </AnimatedSection>
 

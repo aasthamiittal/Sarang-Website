@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import trustimage from "../assests/Product-Related/People-Discussing-image.png";
+import aboutSarangImage from "../assests/Home/about-sarang.png";
 
 const offerings = [
   {
@@ -186,8 +187,8 @@ export default function Home() {
       </section>
 
       <AnimatedSection className="section">
-        <div className="section-content two-column">
-          <motion.div variants={itemVariants}>
+        <div className="section-content section-with-image">
+          <motion.div className="section-image-block" variants={itemVariants}>
             <h2>About Sarang</h2>
             <p>
               Sarang builds practical, user-friendly tools that make everyday
@@ -197,7 +198,11 @@ export default function Home() {
               as business grows, ensuring long-term stability and impact.
             </p>
           </motion.div>
-
+          <motion.div className="section-image-wrap" variants={cardVariants}>
+            <img src={aboutSarangImage} alt="About Sarang" loading="lazy" />
+          </motion.div>
+        </div>
+        <div className="section-content">
           <motion.div 
             className="highlight-card"
             variants={cardVariants}
