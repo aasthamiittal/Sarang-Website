@@ -24,7 +24,7 @@ const dashboards = [
 const pricingPlans = [
   {
     name: "Basic",
-    price: "₹12,000 per month",
+    price: "₹18,000 per month",
     note: "Single dashboard, core metrics",
     perks: [
       "1 dashboard view",

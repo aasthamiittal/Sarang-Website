@@ -73,7 +73,7 @@ const pricingOverview = [
   },
   {
     product: "Dashboards",
-    range: "₹12,000 – ₹45,000/month",
+    range: "₹18,000 – ₹45,000/month",
     subscription: "Subscription-based",
     note: "Basic to Enterprise with unlimited dashboards and API access.",
   },
