@@ -67,7 +67,7 @@ const pricingOverview = [
   },
   {
     product: "Websites",
-    range: "₹25,000 – Custom",
+    range: "₹15,000 – Custom",
     subscription: "Subscription-based (hosting + support)",
     note: "From landing pages to Shopify/Odoo stores and enterprise builds.",
   },

@@ -24,7 +24,7 @@ const websiteTypes = [
 const pricingPlans = [
   {
     name: "Starter",
-    price: "₹25,000 onwards",
+    price: "₹15,000 onwards",
     note: "Landing page or simple website",
     perks: [
       "Up to 5 pages",
